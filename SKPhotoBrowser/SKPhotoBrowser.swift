@@ -118,8 +118,8 @@ public class SKPhotoBrowser: UIViewController, UIScrollViewDelegate {
     public var enableSingleTapDismiss = false
     /// Set nil to force the statusbar to be hidden
     public var statusBarStyle: UIStatusBarStyle?
-    public var tintColor = UIColor.whiteColor()
-    public var textColor = UIColor.whiteColor()
+    public var displayTintColor = UIColor.whiteColor()
+    public var displayTextColor = UIColor.whiteColor()
     
     // actions
     private var activityViewController: UIActivityViewController!
@@ -297,7 +297,7 @@ public class SKPhotoBrowser: UIViewController, UIScrollViewDelegate {
         previousBtn.setImage(previousImage, forState: .Normal)
         previousBtn.addTarget(self, action: #selector(self.gotoPreviousPage), forControlEvents: .TouchUpInside)
         previousBtn.contentMode = .Center
-        previousBtn.tintColor = self.tintColor
+        previousBtn.tintColor = self.displayTintColor
         toolPreviousButton = UIBarButtonItem(customView: previousBtn)
         
         // arrows:next
@@ -308,14 +308,14 @@ public class SKPhotoBrowser: UIViewController, UIScrollViewDelegate {
         nextBtn.setImage(nextImage, forState: .Normal)
         nextBtn.addTarget(self, action: #selector(self.gotoNextPage), forControlEvents: .TouchUpInside)
         nextBtn.contentMode = .Center
-        nextBtn.tintColor = self.tintColor
+        nextBtn.tintColor = self.displayTintColor
         toolNextButton = UIBarButtonItem(customView: nextBtn)
         
         toolCounterLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 95, height: 40))
         toolCounterLabel.textAlignment = .Center
         toolCounterLabel.backgroundColor = .clearColor()
         toolCounterLabel.font  = UIFont(name: "Helvetica", size: 16.0)
-        toolCounterLabel.textColor = self.textColor
+        toolCounterLabel.textColor = self.displayTextColor
         toolCounterLabel.shadowColor = .darkTextColor()
         toolCounterLabel.shadowOffset = CGSize(width: 0.0, height: 1.0)
         
@@ -330,7 +330,7 @@ public class SKPhotoBrowser: UIViewController, UIScrollViewDelegate {
         
         // action button
         toolActionButton = UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: #selector(SKPhotoBrowser.actionButtonPressed))
-        toolActionButton.tintColor = self.tintColor
+        toolActionButton.tintColor = self.displayTintColor
         
         // gesture
         panGesture = UIPanGestureRecognizer(target: self, action: #selector(SKPhotoBrowser.panGestureRecognized(_:)))
@@ -431,7 +431,7 @@ public class SKPhotoBrowser: UIViewController, UIScrollViewDelegate {
                 closeButton.imageEdgeInsets = UIEdgeInsetsMake(12, 12, 12, 12)
             }
             closeButton.backgroundColor = .clearColor()
-            closeButton.tintColor = self.tintColor
+            closeButton.tintColor = self.displayTintColor
             closeButton.addTarget(self, action: #selector(self.closeButtonPressed(_:)), forControlEvents: UIControlEvents.TouchUpInside)
             closeButtonHideFrame = CGRect(x: 5, y: -20, width: 44, height: 44)
             closeButtonShowFrame = CGRect(x: 5, y: buttonTopOffset, width: 44, height: 44)
@@ -456,7 +456,7 @@ public class SKPhotoBrowser: UIViewController, UIScrollViewDelegate {
             }
             deleteButton.setImage(image, forState: .Normal)
             deleteButton.addTarget(self, action: #selector(self.deleteButtonPressed(_:)), forControlEvents: UIControlEvents.TouchUpInside)
-            deleteButton.tintColor = self.tintColor
+            deleteButton.tintColor = self.displayTintColor
             deleteButton.alpha = 0.0
             view.addSubview(deleteButton)
             deleteButton.translatesAutoresizingMaskIntoConstraints = true
@@ -473,7 +473,7 @@ public class SKPhotoBrowser: UIViewController, UIScrollViewDelegate {
             customCloseButton = UIButton(type: .Custom)
             customCloseButton.addTarget(self, action: #selector(self.closeButtonPressed(_:)), forControlEvents: .TouchUpInside)
             customCloseButton.backgroundColor = .clearColor()
-            customCloseButton.tintColor = self.tintColor
+            customCloseButton.tintColor = self.displayTintColor
             // If another developer has not set their values
             if customCloseButtonImage != nil {
                 customCloseButton.setImage(customCloseButtonImage, forState: .Normal)
@@ -499,7 +499,7 @@ public class SKPhotoBrowser: UIViewController, UIScrollViewDelegate {
         if displayCustomDeleteButton == true {
             customDeleteButton = UIButton(type: .Custom)
             customDeleteButton.backgroundColor = .clearColor()
-            customDeleteButton.tintColor = self.tintColor
+            customDeleteButton.tintColor = self.displayTintColor
             customDeleteButton.addTarget(self, action: #selector(self.deleteButtonPressed(_:)), forControlEvents: .TouchUpInside)
             // If another developer has not set their values
             if customDeleteButtonShowFrame == nil && customDeleteButtonHideFrame == nil {
